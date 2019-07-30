@@ -1,2 +1,56 @@
 # docker-php-mysql
-Instala un ambiente de desarrollo local con PHP / MySQL
+
+Instala rápidamente un ambiente de desarrollo local para trabajar con [PHP](https://www.php.net/) y [MySQL](https://www.mysql.com/) utilizando [Docker](https://www.docker.com). 
+
+Utilizar *Docker* es sencillo, pero existen tantas imágenes, versiones y formas para crear los contenedores que hacen tediosa esta tarea. Este proyecto ofrece una instalación rápida, con versiones estandar y con la mínima cantidad de modificaciones a las imágenes de Docker. Viene configurado con  `PHP 7.3` y `MySQL 5.7`.
+
+### Requerimientos
+
+* [Docker Desktop](https://www.docker.com/products/docker-desktop)
+
+
+### Configurar el ambiente de desarrollo
+
+Puedes utilizar la configuración por defecto, pero en ocasiones es recomendable modificar la configuración para que sea igual al servidor de producción. La configuración se ubica en el archivo `.env` con las siguientes opciones:
+
+* `PHP_VERSION` versión de PHP.
+* `PHP_PORT` puerto para servidor web.
+* `MYSQL_VERSION` versión de MySQL.
+* `MYSQL_USER` nombre de usuario para conectarse a MySQL.
+* `MYSQL_PASSWORD` clave de acceso para conectarse a MySQL.
+* `MYSQL_DATABASE` nombre de la base de datos que se crea por defecto.
+
+
+### Instalar el ambiente de desarrollo
+
+La instalación se hace en línea de comandos:
+
+```zsh
+docker-compose up -d
+```
+
+
+### Comandos disponibles
+
+Una vez instalado, se pueden utilizar los siguiente comandos:
+
+```zsh
+docker-compose start    # Iniciar el ambiente de desarrollo
+docker-compose stop     # Detener el ambiente de desarrollo
+docker-compose down     # Detener y eliminar el ambiente de desarrollo.
+```
+
+
+### Estructura de Archivos
+
+* `/docker/` contiene los archivos de configuración de Docker.
+* `/www/` carpeta para los archivos PHP del proyecto.
+
+
+### Accesos
+
+| Servicio | Dominio  | Usuario | Clave |
+|---|---|---|---|
+| MySQL | mysql | wordpress | password |
+| Web | http://localhost/ | | |
+
