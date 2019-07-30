@@ -1,4 +1,4 @@
-# docker-php-mysql
+# Docker: PHP & MySQL
 
 Instala rápidamente un ambiente de desarrollo local para trabajar con [PHP](https://www.php.net/) y [MySQL](https://www.mysql.com/) utilizando [Docker](https://www.docker.com). 
 
@@ -13,9 +13,9 @@ Utilizar *Docker* es sencillo, pero existen tantas imágenes, versiones y formas
 
 Puedes utilizar la configuración por defecto, pero en ocasiones es recomendable modificar la configuración para que sea igual al servidor de producción. La configuración se ubica en el archivo `.env` con las siguientes opciones:
 
-* `PHP_VERSION` versión de PHP.
+* `PHP_VERSION` versión de PHP ([Versiones disponibles de PHP](https://github.com/docker-library/docs/blob/master/php/README.md#supported-tags-and-respective-dockerfile-links)).
 * `PHP_PORT` puerto para servidor web.
-* `MYSQL_VERSION` versión de MySQL.
+* `MYSQL_VERSION` versión de MySQL([Versiones disponibles de MySQL](https://hub.docker.com/_/mysql)).
 * `MYSQL_USER` nombre de usuario para conectarse a MySQL.
 * `MYSQL_PASSWORD` clave de acceso para conectarse a MySQL.
 * `MYSQL_DATABASE` nombre de la base de datos que se crea por defecto.
