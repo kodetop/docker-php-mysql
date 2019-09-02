@@ -51,6 +51,6 @@ docker-compose down     # Detener y eliminar el ambiente de desarrollo.
 
 | Servicio | Dominio  | Usuario | Clave |
 |---|---|---|---|
-| MySQL | mysql | wordpress | password |
+| MySQL | mysql | username | password |
 | Web | http://localhost/ | | |
 
