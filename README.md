@@ -55,12 +55,13 @@ docker-compose down     # Detener y eliminar el ambiente de desarrollo.
 
 #### Base de datos
 
-| Usuario | Clave | Base de datos |
-|:---:|:---:|:---:|
-| dbuser | dbpass | dbname |
-
 Existen dos dominios para conectarse a base de datos.
 
 * `mysql`: para conexión desde los archivos PHP.
 * `localhost`: para conexiones externas al contenedor.
 
+Las credenciales por defecto para la conexión son:
+
+| Usuario | Clave | Base de datos |
+|:---:|:---:|:---:|
+| dbuser | dbpass | dbname |
