@@ -4,12 +4,11 @@ Instala rápidamente un ambiente de desarrollo local para trabajar con [PHP](htt
 
 Utilizar *Docker* es sencillo, pero existen tantas imágenes, versiones y formas para crear los contenedores que hacen tediosa esta tarea. Este proyecto ofrece una instalación rápida, con versiones estandar y con la mínima cantidad de modificaciones a las imágenes de Docker. Viene configurado con  `PHP 7.3` y `MySQL 5.7`.
 
-### Requerimientos
+## Requerimientos
 
 * [Docker Desktop](https://www.docker.com/products/docker-desktop)
 
-
-### Configurar el ambiente de desarrollo
+## Configurar el ambiente de desarrollo
 
 Puedes utilizar la configuración por defecto, pero en ocasiones es recomendable modificar la configuración para que sea igual al servidor de producción. La configuración se ubica en el archivo `.env` con las siguientes opciones:
 
@@ -20,8 +19,7 @@ Puedes utilizar la configuración por defecto, pero en ocasiones es recomendable
 * `MYSQL_PASSWORD` clave de acceso para conectarse a MySQL.
 * `MYSQL_DATABASE` nombre de la base de datos que se crea por defecto.
 
-
-### Instalar el ambiente de desarrollo
+## Instalar el ambiente de desarrollo
 
 La instalación se hace en línea de comandos:
 
@@ -30,7 +28,7 @@ docker-compose up -d
 ```
 Puedes vaidar que se ha instalado correctamente accediendo a: [http://localhost/info.php](http://localhost/info.php)
 
-### Comandos disponibles
+## Comandos disponibles
 
 Una vez instalado, se pueden utilizar los siguiente comandos:
 
@@ -40,17 +38,26 @@ docker-compose stop     # Detener el ambiente de desarrollo
 docker-compose down     # Detener y eliminar el ambiente de desarrollo.
 ```
 
-
-### Estructura de Archivos
+## Estructura de Archivos
 
 * `/docker/` contiene los archivos de configuración de Docker.
 * `/www/` carpeta para los archivos PHP del proyecto.
 
+## Accesos
 
-### Accesos
+### Web
 
-| Servicio | Dominio  | Usuario | Clave |
-|---|---|---|---|
-| MySQL | mysql | username | password |
-| Web | http://localhost/ | | |
+* http://localhost/
 
+### Base de datos
+
+Existen dos dominios para conectarse a base de datos.
+
+* `mysql`: para conexión desde los archivos PHP.
+* `localhost`: para conexiones externas al contenedor.
+
+Las credenciales por defecto para la conexión son:
+
+| Usuario | Clave | Base de datos |
+|:---:|:---:|:---:|
+| dbuser | dbpass | dbname |
