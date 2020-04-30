@@ -8,7 +8,6 @@ Utilizar *Docker* es sencillo, pero existen tantas imágenes, versiones y formas
 
 * [Docker Desktop](https://www.docker.com/products/docker-desktop)
 
-
 ## Configurar el ambiente de desarrollo
 
 Puedes utilizar la configuración por defecto, pero en ocasiones es recomendable modificar la configuración para que sea igual al servidor de producción. La configuración se ubica en el archivo `.env` con las siguientes opciones:
@@ -19,7 +18,6 @@ Puedes utilizar la configuración por defecto, pero en ocasiones es recomendable
 * `MYSQL_USER` nombre de usuario para conectarse a MySQL.
 * `MYSQL_PASSWORD` clave de acceso para conectarse a MySQL.
 * `MYSQL_DATABASE` nombre de la base de datos que se crea por defecto.
-
 
 ## Instalar el ambiente de desarrollo
 
@@ -45,14 +43,13 @@ docker-compose down     # Detener y eliminar el ambiente de desarrollo.
 * `/docker/` contiene los archivos de configuración de Docker.
 * `/www/` carpeta para los archivos PHP del proyecto.
 
-
 ## Accesos
 
-#### Web
+### Web
 
 * http://localhost/
 
-#### Base de datos
+### Base de datos
 
 Existen dos dominios para conectarse a base de datos.
 
