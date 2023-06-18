@@ -2,7 +2,9 @@
 
 Instala rápidamente un ambiente de desarrollo local para trabajar con [PHP](https://www.php.net/) y [MySQL](https://www.mysql.com/) utilizando [Docker](https://www.docker.com). 
 
-Utilizar *Docker* es sencillo, pero existen tantas imágenes, versiones y formas para crear los contenedores que hacen tediosa esta tarea. Este proyecto ofrece una instalación rápida, con versiones estandar y con la mínima cantidad de modificaciones a las imágenes de Docker. Viene configurado con  `PHP 7.3` y `MySQL 5.7`.
+Utilizar *Docker* es sencillo, pero existen tantas imágenes, versiones y formas para crear los contenedores que hacen tediosa esta tarea. Este proyecto ofrece una instalación rápida, con versiones estandar y con la mínima cantidad de modificaciones a las imágenes de Docker. 
+
+Viene configurado con  `PHP 7.4` y `MySQL 5.7`, además se incluyen las extensiones `gd`, `zip` y `mysql`.
 
 ## Requerimientos
 
@@ -26,7 +28,7 @@ La instalación se hace en línea de comandos:
 ```zsh
 docker-compose up -d
 ```
-Puedes vaidar que se ha instalado correctamente accediendo a: [http://localhost/info.php](http://localhost/info.php)
+Puedes verificar la instalación accediendo a: [http://localhost/info.php](http://localhost/info.php)
 
 ## Comandos disponibles
 
