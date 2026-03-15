@@ -7,3 +7,6 @@
 
 # composer vendor files
 vendor/
+
+# environment files with credentials
+.env
