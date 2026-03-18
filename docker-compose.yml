@@ -22,7 +22,12 @@ services:
       - mysql-data:/var/lib/mysql
     ports:
       - "${MYSQL_PORT}:3306"
-    restart: always
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     networks:
       - network-id
 
@@ -36,7 +41,9 @@ services:
       - "${PHP_PORT}:80"
     volumes:
       - ./www:/var/www/html
-    links:
-      - mysql
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
     networks:
       - network-id
