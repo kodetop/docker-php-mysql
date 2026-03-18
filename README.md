@@ -82,9 +82,9 @@ Las credenciales de ejemplo en `.env.example` son:
 
 ## Ejemplos de uso
 
-### Conexión a MySQL desde PHP
+### 1.- Conexión a MySQL desde PHP
 
-**Usando PDO:**
+Usando PDO:
 
 ```php
 <?php
@@ -100,26 +100,6 @@ try {
 } catch (PDOException $e) {
     die("Error de conexión: " . $e->getMessage());
 }
-?>
-```
-
-**Usando MySQLi:**
-
-```php
-<?php
-$host = 'mysql';
-$user = 'developer';
-$pass = 'developer_password';
-$db   = 'app_database';
-
-$conn = new mysqli($host, $user, $pass, $db);
-
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
-}
-echo "Conexión exitosa!";
-$conn->close();
-?>
 ```
 
 ## Extensiones PHP adicionales
@@ -136,13 +116,6 @@ RUN docker-php-ext-install mbstring
 RUN apt-get update && apt-get install -y libicu-dev \
     && docker-php-ext-install intl
 ```
-
-**Instalar extensión Redis:**
-```dockerfile
-RUN pecl install redis \
-    && docker-php-ext-enable redis
-```
-
 **Instalar extensión imagick:**
 ```dockerfile
 RUN apt-get update && apt-get install -y libmagickwand-dev \
@@ -156,7 +129,7 @@ docker-compose build --no-cache php
 docker-compose up -d
 ```
 
-## Troubleshooting
+## Problemas comunes
 
 ### El contenedor MySQL no inicia
 
@@ -173,23 +146,11 @@ docker-compose up -d
 
 **Problema:** `SQLSTATE[HY000] [2002] Connection refused`
 
-**Solución:** Asegúrate de usar el nombre del servicio `mysql` como host, NO `localhost`:
+**Solución:** Asegúrate de usar el nombre del servicio `mysql` como host en lugar de `localhost`:
 ```php
-$host = 'mysql'; // ✅ Correcto
-$host = 'localhost'; // ❌ Incorrecto desde PHP
+$host = 'mysql';        // Correcto
+$host = 'localhost';    // Incorrecto desde PHP
 ```
-
-### Error "Permission denied" al acceder a archivos en /www
-
-**Problema:** Los archivos creados desde el contenedor tienen permisos incorrectos.
-
-**Solución en Linux/Mac:** Ajusta los permisos:
-```zsh
-sudo chown -R $USER:$USER www/
-chmod -R 755 www/
-```
-
-**Solución en Windows:** Asegúrate de que Docker Desktop tenga acceso a la carpeta compartida en Settings > Resources > File Sharing.
 
 ### Puerto 80 o 3306 ya está en uso
 
@@ -212,6 +173,7 @@ docker-compose up -d
 **Problema:** Los cambios no aparecen al recargar el navegador.
 
 **Solución:** Verifica que el volumen esté montado correctamente y limpia la caché de Apache:
+
 ```zsh
 docker-compose restart php
 ```
@@ -220,13 +182,4 @@ Si persiste, reconstruye la imagen:
 ```zsh
 docker-compose build --no-cache php
 docker-compose up -d
-```
-
-### Error al construir imagen: "Package not found"
-
-**Problema:** Falla la instalación de dependencias en el Dockerfile.
-
-**Solución:** Actualiza la lista de paquetes y reconstruye:
-```zsh
-docker-compose build --no-cache --pull
 ```
