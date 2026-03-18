@@ -2,17 +2,15 @@
 
 Instala rápidamente un ambiente de desarrollo local para trabajar con [PHP](https://www.php.net/) y [MySQL](https://www.mysql.com/) utilizando [Docker](https://www.docker.com). 
 
-Utilizar *Docker* es sencillo, pero existen tantas imágenes, versiones y formas para crear los contenedores que hacen tediosa esta tarea. Este proyecto ofrece una instalación rápida, con versiones estandar y con la mínima cantidad de modificaciones a las imágenes de Docker. 
-
-Viene configurado con `PHP 8.2` y `MySQL 8.0`, además se incluyen las extensiones `gd`, `zip` y `mysql`.
+Utilizar *Docker* es sencillo, pero existen tantas imágenes, versiones y formas para crear los contenedores que hacen tediosa esta tarea. Este proyecto ofrece una instalación rápida, con versiones estandar y con la mínima cantidad de modificaciones a las imágenes de Docker. Viene configurado con `PHP 8.2` y `MySQL 8.0`, además se incluyen las extensiones `gd`, `zip` y `mysql`.
 
 ## Requerimientos
 
 * [Docker Desktop](https://www.docker.com/products/docker-desktop)
 
-## Configurar el ambiente de desarrollo
+## Configuración
 
-### Primer paso: Crear archivo de configuración
+### 1.- Crear archivo de configuración
 
 Copia el archivo de ejemplo y personaliza las credenciales:
 
@@ -20,23 +18,23 @@ Copia el archivo de ejemplo y personaliza las credenciales:
 cp .env.example .env
 ```
 
-**⚠️ IMPORTANTE:** Por seguridad, el archivo `.env` contiene credenciales y NO debe ser versionado en git. Modifica los valores antes de usar en producción.
+### 2.- Variables de configuración
 
-### Variables de configuración
+Puedes utilizar la configuración por defecto, pero puedes cambiar las opciones directamente. La configuración se ubica en el archivo `.env` con las siguientes opciones:
 
-Puedes utilizar la configuración por defecto, pero en ocasiones es recomendable modificar la configuración para que sea igual al servidor de producción. La configuración se ubica en el archivo `.env` con las siguientes opciones:
+| Opción                | Valor por defecto  | Descripción                                                                                                                                                      |
+|-----------------------|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `PROJECT_NAME`        | `php-mysql-dev`      | Nombre del proyecto (afecta nombres de contenedores y redes)                                                                                                     |
+| `PHP_VERSION`         | `8.2`                | Versión de PHP ([Versiones disponibles de PHP](https://github.com/docker-library/docs/blob/master/php/README.md#supported-tags-and-respective-dockerfile-links)) |
+| `PHP_PORT`            | `80`                 | Puerto para servidor web                                                                                                                                         |
+| `MYSQL_VERSION`       | `8.0`                | Versión de MySQL ([Versiones disponibles de MySQL](https://hub.docker.com/_/mysql))                                                                              |
+| `MYSQL_USER`          | `developer`          | Nombre de usuario para conectarse a MySQL                                                                                                                        |
+| `MYSQL_PASSWORD`      | `developer_password` | Contraseña de acceso del usuario para conectarse a MySQL.                                                                                                        |
+| `MYSQL_ROOT_PASSWORD` | `root_password`      | Contraseña de acceso del usuario root de MySQL.                                                                                                                  |
+| `MYSQL_DATABASE`      | `app_database`       | Nombre de la base de datos que se crea por defecto.                                                                                                              |
+| `MYSQL_PORT`          | `3306`               | Puerto para acceder a MySQL externamente.                                                                                             |
 
-* `PROJECT_NAME` nombre del proyecto (afecta nombres de contenedores y redes).
-* `PHP_VERSION` versión de PHP ([Versiones disponibles de PHP](https://github.com/docker-library/docs/blob/master/php/README.md#supported-tags-and-respective-dockerfile-links)).
-* `PHP_PORT` puerto para servidor web.
-* `MYSQL_VERSION` versión de MySQL ([Versiones disponibles de MySQL](https://hub.docker.com/_/mysql)).
-* `MYSQL_USER` nombre de usuario para conectarse a MySQL.
-* `MYSQL_PASSWORD` clave de acceso del usuario para conectarse a MySQL.
-* `MYSQL_ROOT_PASSWORD` clave de acceso del usuario root de MySQL.
-* `MYSQL_DATABASE` nombre de la base de datos que se crea por defecto.
-* `MYSQL_PORT` puerto para acceder a MySQL externamente (comentar para no exponer).
-
-## Instalar el ambiente de desarrollo
+## Instalación
 
 La instalación se hace en línea de comandos:
 
@@ -59,14 +57,15 @@ docker-compose down     # Detener y eliminar el ambiente de desarrollo.
 
 * `/docker/` contiene los archivos de configuración de Docker.
 * `/www/` carpeta para los archivos PHP del proyecto.
+* `/www/.htaccess` reglas de reescritura de URLs para Apache.
 
 ## Accesos
 
-### Web
+### 1.- Web
 
 * http://localhost/
 
-### Base de datos
+### 2.- Base de datos
 
 Existen dos dominios para conectarse a base de datos.
 
