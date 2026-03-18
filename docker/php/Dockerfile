@@ -22,3 +22,11 @@ RUN apt-get update --fix-missing && \
     && a2enmod rewrite headers \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+# PHP configuration
+COPY php.ini /usr/local/etc/php/conf.d/custom.ini
+
+# Apache virtual host
+COPY vhost.conf /etc/apache2/sites-available/000-default.conf
+
+WORKDIR /var/www/html
